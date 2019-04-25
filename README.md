@@ -1,1 +1,4 @@
-# center-of-screen
+How to find the center of screen
+-----
+
+![](eye.gif)

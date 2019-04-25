@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Center</title>
+</head>
+<body>
+  <div id="eye"></div>
+  <script>
+    (function() {
+      var requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+
+      window.requestAnimationFrame = requestAnimationFrame;
+    })();
+
+    function updatePosition(elem) {
+      const browserTopBarSize = 0; // ?
+      const y = (screen.availHeight - elem.offsetHeight) / 2 - window.screenTop - browserTopBarSize;
+      const x = (screen.availWidth - elem.offsetWidth) / 2 - window.screenLeft;
+      elem.style.top = `${y}px`;
+      elem.style.left = `${x}px`;
+      requestAnimationFrame(updatePosition.bind(this, eye));
+    }
+
+    requestAnimationFrame(updatePosition.bind(this, eye));
+
+  </script>
+  <style>
+    #eye {
+      height: 150px;
+      width: 150px;
+      background-image: url("./eye.png");
+      border: 1px solid #231f20;
+      position: fixed;
+      border-radius: 50%;
+    }
+  </style>
+</body>
+</html>
